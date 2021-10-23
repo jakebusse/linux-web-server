@@ -23,29 +23,23 @@
             <h5>Update Systems</h5>
             <p>Make sure all systems are up to date by running the following commands in Terminal <code>Ctrl-Alt-T</code></p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <pink>sudo apt-get</pink> update<br>
-                <pink>sudo apt-get</pink> upgrade
-            </div>
+        <div class="l4 codeblock">
+            <pink>sudo apt-get</pink> update<br>
+            <pink>sudo apt-get</pink> upgrade
         </div>
         <div class="element l3">
             <h5>Install Apache</h5>
             <p>Now install apache with the following command. You may be prompted to enter your account password to authenticate to use sudo powers.</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <pink>sudo apt install</pink> apache2 -y
-            </div>
+        <div class="l4 codeblock">
+            <pink>sudo apt install</pink> apache2 -y
         </div>
         <div class="element l3">
             <h5>Find Local IP Address</h5>
             <p>In order to test our Apache installation and know where to point our web server to, we first need to find our local IP address on the Wi-Fi network. Use the command below to find this.</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                hostname -I
-            </div>
+        <div class="l4 codeblock">
+            hostname -I
         </div>
         <div class="element l3">
             <h5>Testing Apache Installation</h5>
@@ -58,11 +52,9 @@
             <h5>Configuring Folder Permissions</h5>
             <p>To make sure you can properly write to your web pages and make sure that they can be displayed publicly, execute the following commands.</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <pink>sudo usermod</pink> -a -G www-data [your username]<br>
-                <pink>sudo chown</pink> -R -f www-data:www-data /var/www
-            </div>
+        <div class="l4 codeblock">
+            <pink>sudo usermod</pink> -a -G www-data [your username]<br>
+            <pink>sudo chown</pink> -R -f www-data:www-data /var/www
         </div>
         <div class="element l2">
             <h3>Install and Test PHP</h3>
@@ -71,31 +63,210 @@
             <h5>Install PHP</h5>
             <p>Execute the following command to install PHP (for reference, you may need to manually install php extensions later for specific applications that are not included with the main package).</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <pink>sudo apt install</pink> php -y
-            </div>
+        <div class="l4 codeblock">
+            <pink>sudo apt install</pink> php -y
         </div>
         <div class="element l3">
             <h5>Configure Test PHP Page</h5>
             <p>Create a new PHP file by executing the following command:</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <pink>sudo nano</pink> /var/www/html/example.php
-            </div>
+        <div class="l4 codeblock">
+            <pink>sudo nano</pink> /var/www/html/example.php
         </div>
         <div class="element l3">
             <p>Add the following code to the file:</p>
         </div>
-        <div class="element l4">
-            <div class="codeblock">
-                <orange><b>&lt;?php</b></orange><br>
-                <blue>echo</blue> <green>"Today's date is "</green>.<pink>date</pink>(<green>'Y-m-d H:i:s'</green>);
-            </div>
+        <div class="l4 codeblock">
+            <orange><b>&lt;?php</b></orange><br>
+            <blue>echo</blue> <green>"Today's date is "</green>.<pink>date</pink>(<green>'Y-m-d H:i:s'</green>);
         </div>
         <div class="element l3">
             <p>Save the file by pressing <code>CTRL + X</code>, <code>Y</code>, then <code>ENTER</code></p>
+        </div>
+        <div class="element l3">
+            <h5>Check PHP Installation</h5>
+            <p>Check your PHP installation and your PHP code by navigating to <code>http://[YOUR IP]/example.php</code></p>
+            <p>You should see an output like this:</p>
+        </div>
+        <div class="l4 codeblock">
+            Today's date is 2021-09-07 23:57:25
+        </div>
+        <div class="element l2">
+            <h3>Install mySQL Server</h3>
+        </div>
+        <div class="element l3">
+            <h5>Install MariaDB-Server</h5>
+            <p>Execute the following command to install Maria-DB:</p>
+        </div>
+        <div class="l4 codeblock">
+            <pink>sudo apt install</pink> mariadb-server -y
+        </div>
+        <div class="element l3">
+            <h5>Secure Server</h5>
+            <p>Run the following command to begin securing the SQL server:</p>
+        </div>
+        <div class="codeblock l4"> 
+            <pink>sudo</pink> mysql_secure_installation
+        </div>
+        <div class="element l3">
+            <p>Set a password for the root SQL user for maximum security.</p>
+            <p><b>RECOMMENDED SETTINGS:</b></p>
+            <div style="margin-left:25px">
+                <p>Remove anonymous users? <code>Y</code></p>
+                <p>Disallow root login remotely? <code>N</code></p>
+                <p>Remove test database and access to it? <code>Y</code></p>
+                <p>Reload privilege tables now? <code>Y</code></p>
+            </div>
+        </div>
+        <div class="element l2">
+            <h3>Install phpMyAdmin</h3>
+        </div>
+        <div class="element l3">
+            <h5>Install phpMyAdmin</h5>
+            <p>Execute the following command to install phpMyAdmin:</p>
+        </div>
+        <div class="codeblock l4"> 
+            <pink>sudo apt install</pink> phpmyadmin -Y
+        </div>
+        <div class="element l3">
+            <h5>Configure phpMyAdmin Installation</h5>
+            <p>Select "<code>apache2</code>" as the server type by pressing the space bar (make sure the asterisk is next to it) and pressing <code>ENTER</code>.</p>
+            <p>Select <code>&lt;YES&gt;</code> for the next prompt.</p>
+        </div>
+        <div class="element l3">
+            <h5>Setting phpMyAdmin Password</h5>
+            <p>You will now be asked to enter a phpMyAdmin password. It is recommended to use a different one that your SQL server for security but I always use the same one.</p>
+        </div>
+        <div class="element l3">
+            <h5>Create phpMyAdmin User</h5>
+            <p>You will need to create a separate user for phpMyAdmin to use to configure SQL instead of the root user. To get started, execute the following command:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo</pink> mysql -u root -p
+        </div>
+        <div class="element l3">
+            <p>Now execute the following command to create a user (replace [username] with your desired username and [password] with your desired password:</p>
+        </div>
+        <div class="codeblock l4">
+            <blue>GRANT ALL PRIVILEGES ON</blue> <pink>*.*</pink> <blue>TO</blue> <green>'[username]'</green><orange>@'localhost'</orange> <blue>IDENTIFIED BY</blue> <green>'[password]'</green> <blue>WITH GRANT OPTION</blue>;
+        </div>
+        <div class="element l3">
+            <p>Now exit this SQL command line by typing "quit"</p>
+        </div>
+        <div class="element l3">
+            <h5>Configuring phpMyAdmin with Apache</h5>
+            <p>Open the Apache configuration file by executing the following command:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo nano</pink> /etc/apache2/apache2.conf
+        </div>
+        <div class="element l3">
+            <p>Add the following line to the bottom of the file:</p>
+        </div>
+        <div class="codeblock l4">
+            Include /etc/phpmyadmin/apache.conf
+        </div>
+        <div class="element l3">
+            <p>To save, press <code>CTRL+X</code>, <code>Y</code>, then <code>ENTER</code>.
+        </div>
+        <div class="element l3">
+            <h5>Restart Apache</h5>
+            <p>We need to restart Apache to make sure our changes take effect.</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo</pink> service apache2 restart
+        </div>
+        <div class="element l3">
+            <h5>Check phpMyAdmin Installation</h5>
+            <p>To check your phpMyAdmin installation go to <code>http://[your-local-ip]/phpmyadmin</code></p>
+            <p>You should get a screen like this:</p>
+        </div>
+        <div class="element l4">
+            <img src="phpmyadmin.png">
+        </div>
+        <div class="element l3">
+            <p>Try to login with the information you specified and make sure it works.</p>
+        </div>
+        <div class="element l2">
+            <h3>Configure Domain Name</h3>
+        </div>
+        <div class="element l3">
+            <h5>Find Global IP Address</h5>
+            <p>Go to your router settings page at <code>http://192.168.0.1</code> and locate your global IP address (or <code>http://192.168.1.1</code> if you're using an extension router (i.e. Netgear, Linksys, TPLink, etc.))</p>
+        </div>
+        <div class="element l3">
+            <h5>Port Forwarding</h5>
+            <p>To point access to your router with your global IP to go to your server and ultimately your website, find the port forwarding settings on your router settings page and forward ports <code>80</code>, <code>8080</code>, and <code>443</code> to your local IP that you found earlier.</p>
+        </div>
+        <div class="element l3">
+            <h5>Set Domain Name Records (DNS)</h5>
+            <p>To point your domain name to your website, create a DNS record type A that points to your global IP address (if you have a dynamic IP address you will need to change this every time your IP changes). To add subdomains, add the subdomain name as the record name and point it to your global IP as well (you will learn how to make subdomains redirect to other folders later).</p>
+            <p>You will not be able to access your global IP from your Wi-Fi network so I recommend creating a separate A record named 'i' that points to your local IP so you can go to <code>http://i.[yourdomain].tld</code> to access your website. Also consider adding a www subdomain and a www.i subdomain.</p>
+        </div>
+        <div class="element l2">
+            <h3>Apache VirtualHost Configuration</h3>
+            <p>VirtualHosts are handy for when you need to create a subdomain for your website. A subdomain will allow you to redirect a subdomain to a different directory on your website to avoid using slashes. A VirtualHost will allow you to use the same IP address but detect what the source domain is and choose the directory based on said source domain.</p>
+        </div>
+        <div class="element l3">
+            <h5>Creating your Subdomain Directory</h5>
+            <p>Execute the following commands to create your directory and properly set the permissions for it (replace [domain] with your domain, [subdomain] with the desired subdomain, and [tld] with your domain ending (if you would like you can also add a public_html directory to hold your public site files, just make sure to reflect that later in your VirtualHost file:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo mkdir</pink> -p /var/www/[subdomain].[domain].[tld]<br>
+            <pink>sudo chown</pink> -R www-data:www-data /var/www/[subdomain].[domain].[tld]
+        </div>
+        <div class="element l3">
+            <h5>Creating the Configuration File</h5>
+            <p>To create a new VirtualHost configuration file, execute the following command (replace subdomain with the subdomain, domain with your domain, and tld with your corresponding domain ending (com, net, etc.)):</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo nano</pink> /etc/apache2/sites-available/[subdomain].[domain].[tld].conf
+        </div>
+        <div class="element l3">
+            <h5>Configuring the VirtualHost File</h5>
+            <p>Configure your VirtualHost file to look like this. Replace [directory] with the name of the directory you want to redirect to (you can also redirect deeper into more directories, just add backslashes), replace [domain] and [subdomai] with your domain and new subdomain, and [tld] with your domain ending (com, net, org, etc).</p>
+        </div>
+        <div class="codeblock l4">
+            &lt;VirtualHost *80&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ServerName [domain].[tld]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server Alias www.[domain].[tld]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DocumentRoot /var/www/[directory]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ErrorLog ${APACHE_LOG_DIR}/[domain].[tld]_error.log<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CustomLog ${APACHE_LOG_DIR)/[domain].[tld]_access.log combined<br>
+            &lt;/VirtualHost&gt;
+        </div>
+        <div class="element l3">
+            <p>Due to the ServerAlias field, this will also automatically configure for www subdomains (or sub-subdomain) as long as you create it in your DNS settings. If you are using the i subdomain for local access you will need to create a separate VirtualHost. Remember, you can make subdomains as deep and as nested as you want (i.e. one.two.three.four.five.six.com)</p>
+        </div>
+        <div class="element l3">
+            <h5>Add VirtualHost to Enabled Sites</h5>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo</pink> a2ensite [subdomain].[domain].[tld].conf<br>
+            <pink>sudo</pink> systemctl reload apache2
+        </div>
+        <div class="element l3">
+            <h5>Copy VirtualHost Files</h5>
+            <p>If you would like to copy old VirtualHost files for ease of use, first list the previous VirtualHost files by executing:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>cd</pink> /etc/apache2/sites-available<br>
+            <pink>ls</pink>
+        </div>
+        <div class="element l3">
+            <p>Then make sure you know what you want your new subdomain to be and execute the following:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo</pink> cp [old-subdomain].conf [new-subdomain].conf
+        </div>
+        <div class="element l3">
+            <p>Then open the new file by executing:</p>
+        </div>
+        <div class="codeblock l4">
+            <pink>sudo nano</pink> [new-subdomain].conf<br>
+            -- OR --<br>
+            <pink>sudo nano</pink> /etc/sites-available/[new-subdomain].conf
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
