@@ -57,3 +57,12 @@ green {
 .l4 img {
     max-width: 100%;
 }
+
+::selection {
+    background: #e37288; /* WebKit/Blink Browsers */
+    color: #f7f6f3;
+  }
+  ::-moz-selection {
+    background: #e37288; /* Gecko Browsers */
+    color: #f7f6f3;
+  }
