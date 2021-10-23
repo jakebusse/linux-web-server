@@ -1,0 +1,58 @@
+body {
+    margin: 2vw;
+}
+
+code {
+    background-color: #f7f6f3;
+    font-family: Courier;
+    font-size: inherit;
+    padding: 3px;
+    color: #e37288;
+}
+
+.codeblock {
+    background-color: #f7f6f3;
+    border-radius: 5px;
+    font-family: Courier;
+    padding: 20px;
+}
+
+pink {
+    color: #e37288;
+}
+
+blue {
+    color: #0077aa;
+}
+
+orange {
+    color: #ee9900;
+}
+
+green {
+    color: #669900;
+}
+
+.element {
+    margin: 30px 0px 20px 0px;
+}
+
+.l1 {
+    margin-left: 0vw;
+}
+
+.l2 {
+    margin-left: 5vw;
+}
+
+.l3 {
+    margin-left: 10vw;
+}
+
+.l4 {
+    margin-left: 13vw;
+}
+
+.l4 img {
+    max-width: 100%;
+}
